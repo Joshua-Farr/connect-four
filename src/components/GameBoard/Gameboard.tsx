@@ -20,7 +20,7 @@ export default function GameBoard(gameboard: GameBoardProps) {
   function createBoard() {
     let renderedBoard: any = []; // need to fix the TypeScript on this...
 
-    for (let j = 6; j >= 0; j--) {
+    for (let j = 5; j >= 0; j--) {
       for (let i = 0; i < 7; i++) {
         if (gameboard.currentGameBoard[i][j]) {
           console.log(`Generating piece for spot for Column: ${i} Row: ${j}`);
@@ -37,7 +37,7 @@ export default function GameBoard(gameboard: GameBoardProps) {
       }
     }
 
-    console.log(renderedBoard);
+    // console.log(renderedBoard);
     return renderedBoard;
   }
 

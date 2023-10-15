@@ -1,12 +1,20 @@
 import "./App.css";
 import GameBoard from "./components/GameBoard/Gameboard";
 import ConnectFour from "./ConnectFour";
-import { useState, useEffect } from "react";
+import { useState, useEffect, createContext } from "react";
+
+type BoardGameContext = {
+  selectColumn: void;
+};
+
+// export const GameContext = createContext<BoardGameContext>();
 
 function App() {
   const [column, setColumn] = useState(0);
 
   const connectFour = new ConnectFour(6, 7);
+
+  // const;
 
   function selectColumn(newColumn: number) {
     setColumn(newColumn);
@@ -23,7 +31,7 @@ function App() {
   }
 
   // const columnContext = createContext(column);
-
+  // useEffect(() => {
   connectFour.placePiece(0);
   connectFour.placePiece(1);
   connectFour.placePiece(1);
@@ -37,7 +45,8 @@ function App() {
   connectFour.placePiece(1);
   connectFour.placePiece(0);
   connectFour.placePiece(3);
-  connectFour.placePiece(0);
+  // }, []);
+  // connectFour.placePiece(0);
   // newGame.placePiece(3);
   // newGame.placePiece(4);
   // newGame.placePiece(4);
@@ -54,7 +63,9 @@ function App() {
   return (
     <div className="app-wrapper">
       <h1 className="title">Connect Four!</h1>
+
       <GameBoard currentGameBoard={connectFour.board} />
+
       <button
         className="newgame-btn"
         onClick={() => {

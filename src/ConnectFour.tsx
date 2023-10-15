@@ -38,16 +38,16 @@ export default class ConnectFour {
 
     //Switching who the player is
     this.player === 1 ? (this.player = 2) : (this.player = 1);
-    console.log("*********************************************");
+    // console.log("*********************************************");
     // console.log(`Its now player number ${this.player}'s turn!`);
   }
 
   checkForWin() {
     //Checking vertical
 
-    console.log(`CHECKING VERITCALS TO SEE IF PLAYER ${this.player} HAS WON`);
+    // console.log(`CHECKING VERITCALS TO SEE IF PLAYER ${this.player} HAS WON`);
     for (let i = 0; i < this.board.length; i++) {
-      console.log(`CHECKING COLUMN NUMBER: ${i}`);
+      // console.log(`CHECKING COLUMN NUMBER: ${i}`);
       let count = 0;
 
       for (let j = 0; j < this.board[i].length; j++) {
@@ -56,7 +56,7 @@ export default class ConnectFour {
         } else {
           count = 0;
         }
-        console.log("count is now", count);
+        // console.log("count is now", count);
         if (count === 4) {
           console.log("GANE OVER!");
           console.log(`PLAYER ${this.player} IS THE WINNER!`);
@@ -67,7 +67,7 @@ export default class ConnectFour {
 
     //Check Horizontals
 
-    console.log(`CHECKING HORIZONTALS TO SEE IF PLAYER ${this.player} HAS WON`);
+    // console.log(`CHECKING HORIZONTALS TO SEE IF PLAYER ${this.player} HAS WON`);
 
     for (let i = 0; i < this.height; i++) {
       let count = 0;
@@ -78,7 +78,7 @@ export default class ConnectFour {
           count = 0;
         }
 
-        console.log("count is now", count);
+        // console.log("count is now", count);
         if (count === 4) {
           console.log("GANE OVER!");
           console.log(`PLAYER ${this.player} IS THE WINNER!`);
