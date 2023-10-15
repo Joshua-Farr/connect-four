@@ -3,6 +3,7 @@
   width: 75px;
   background-color: #7945ff;
   border-radius: 50%;
+  box-shadow: 0px 4px 4px hsl(0deg 0% 0% / 0.44);
 }
 
 .player-1 {

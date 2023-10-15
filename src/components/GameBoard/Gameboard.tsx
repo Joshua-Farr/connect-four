@@ -21,23 +21,20 @@ export default function GameBoard(gameboard: GameBoardProps) {
 
     for (let i = 0; i < fakeGame.length; i++) {
       console.log(fakeGame[i]);
-
+      const column = [];
       for (let j = 0; j < 6; j++) {
-        if (fakeGame[i][j] === 1) {
+        if (fakeGame[i][j]) {
+          column.push(<GamePiece playerNumber={fakeGame[i][j]} />);
+        } else if (!fakeGame[i][j]) {
+          column.push(<GamePiece playerNumber={3} />);
         }
       }
+      renderedBoard.push(column);
     }
 
     return renderedBoard;
   }
 
   const newBoard = createBoard();
-  0;
-  return (
-    <div className="game-board">
-      <h1>This is the gameboard!</h1>
-      {newBoard}
-      <GamePiece playerNumber={-1} />
-    </div>
-  );
+  return <div className="game-board">{newBoard}</div>;
 }
