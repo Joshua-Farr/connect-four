@@ -13,6 +13,12 @@ export default class ConnectFour {
     this.gameOver = false;
   }
 
+  startNewGame() {
+    this.board = new Array(this.width).fill([]).map(() => []);
+    console.log("BLANK BOARD CREATED");
+    console.log(this.board);
+  }
+
   placePiece(rowNumber: number) {
     console.log("here is the board: ", this.board);
     if (this.checkForWin()) {
