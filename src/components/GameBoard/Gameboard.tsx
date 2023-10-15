@@ -33,8 +33,7 @@ export default function GameBoard(gameboard: GameBoardProps) {
     //   renderedBoard.push(column);
     // }
 
-    for (let j = 6; j > 0; j--) {
-      // let row = [];
+    for (let j = 6; j >= 0; j--) {
       for (let i = 0; i < 7; i++) {
         if (fakeGame[i][j]) {
           console.log(`Generating piece for spot for Column: ${i} Row: ${j}`);
@@ -44,7 +43,6 @@ export default function GameBoard(gameboard: GameBoardProps) {
           renderedBoard.push(<GamePiece playerNumber={3} />);
         }
       }
-      // renderedBoard.push(row);
     }
 
     console.log(renderedBoard);
