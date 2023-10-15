@@ -1,0 +1,14 @@
+.game-piece {
+  height: 75px;
+  width: 75px;
+  background-color: #7945ff;
+  border-radius: 50%;
+}
+
+.player-1 {
+  background-color: #ff6389;
+}
+
+.player-2 {
+  background-color: #fecc6a;
+}
