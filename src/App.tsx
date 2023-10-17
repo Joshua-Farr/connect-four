@@ -1,28 +1,36 @@
 import "./App.css";
 import GameBoard from "./components/GameBoard/Gameboard";
 import ConnectFour from "./ConnectFour";
-import { useState, useEffect, createContext } from "react";
+import { useEffect, createContext } from "react";
 
 type BoardGameContext = {
-  selectColumn: void;
+  // columnSelected: number;
+  selectColumn: (newColumn: number) => void;
 };
 
-// export const GameContext = createContext<BoardGameContext>();
+export const GameContext = createContext<BoardGameContext | undefined>(
+  undefined
+);
 
 function App() {
-  const [column, setColumn] = useState(0);
+  // const [columnSelected, setColumnSelected] = useState(0);
 
   const connectFour = new ConnectFour(6, 7);
 
-  // const;
+  useEffect(() => {}, []);
 
-  function selectColumn(newColumn: number) {
-    setColumn(newColumn);
+  function selectColumn(newColumn: number | undefined) {
+    if (newColumn) {
+      // setColumnSelected(newColumn);
+      connectFour.placePiece(newColumn);
+    } else if (newColumn === 0) {
+      connectFour.placePiece(newColumn);
+    }
   }
 
-  useEffect(() => {
-    connectFour.placePiece(column);
-  }, [column]);
+  // useEffect(() => {
+  //   connectFour.placePiece(columnSelected);
+  // }, [columnSelected]);
 
   function startNewGame() {
     console.log("STARTING NEW GAME!");
@@ -32,27 +40,27 @@ function App() {
 
   // const columnContext = createContext(column);
   // useEffect(() => {
-  connectFour.placePiece(0);
-  connectFour.placePiece(1);
-  connectFour.placePiece(1);
-  connectFour.placePiece(1);
-  connectFour.placePiece(1);
-  connectFour.placePiece(2);
-  connectFour.placePiece(1);
-  connectFour.placePiece(2);
-  connectFour.placePiece(1);
-  connectFour.placePiece(2);
-  connectFour.placePiece(1);
-  connectFour.placePiece(0);
-  connectFour.placePiece(3);
-  // }, []);
   // connectFour.placePiece(0);
-  // newGame.placePiece(3);
-  // newGame.placePiece(4);
-  // newGame.placePiece(4);
-  // newGame.placePiece(5);
-  // newGame.placePiece(5);
-  // newGame.placePiece(5);
+  // connectFour.placePiece(1);
+  // connectFour.placePiece(1);
+  // connectFour.placePiece(1);
+  // connectFour.placePiece(1);
+  // connectFour.placePiece(2);
+  // connectFour.placePiece(1);
+  // connectFour.placePiece(2);
+  // connectFour.placePiece(1);
+  // connectFour.placePiece(2);
+  // connectFour.placePiece(1);
+  // connectFour.placePiece(0);
+  // connectFour.placePiece(3);
+  // // }, []);
+  // connectFour.placePiece(0);
+  // connectFour.placePiece(3);
+  // connectFour.placePiece(4);
+  // connectFour.placePiece(4);
+  // connectFour.placePiece(5);
+  // connectFour.placePiece(5);
+  // connectFour.placePiece(5);
   // connectFour.startNewGame();
 
   // Adding in new piece functionality
@@ -64,7 +72,9 @@ function App() {
     <div className="app-wrapper">
       <h1 className="title">Connect Four!</h1>
 
-      <GameBoard currentGameBoard={connectFour.board} />
+      <GameContext.Provider value={{ selectColumn }}>
+        <GameBoard currentGameBoard={connectFour.board} />
+      </GameContext.Provider>
 
       <button
         className="newgame-btn"
