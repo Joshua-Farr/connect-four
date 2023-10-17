@@ -15,8 +15,7 @@ export default class ConnectFour {
 
   startNewGame() {
     this.board = new Array(this.width).fill([]).map(() => []);
-    console.log("BLANK BOARD CREATED");
-    console.log(this.board);
+    console.log("BLANK BOARD CREATED: ", this.board);
   }
 
   placePiece(rowNumber: number) {
@@ -33,12 +32,12 @@ export default class ConnectFour {
       return;
     }
 
-    console.log(`Placing piece in row: ${rowNumber}`);
+    // console.log(`Placing piece in row: ${rowNumber}`);
     this.board[rowNumber].push(this.player);
 
     //Switching who the player is
     this.player === 1 ? (this.player = 2) : (this.player = 1);
-    // console.log("*********************************************");
+    console.log("This is the board with the new piece:", this.board);
     // console.log(`Its now player number ${this.player}'s turn!`);
   }
 

@@ -18,7 +18,6 @@ export default function (props?: PieceProps) {
       props?.playerNumber != 2 &&
       boardGameInfo?.selectColumn
     ) {
-      console.log(`I'm in column: ${props?.column}`);
       // To-do: Add logic for adding piece to selected column
       boardGameInfo.selectColumn(props?.column);
       return true;

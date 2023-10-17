@@ -1,7 +1,7 @@
 import "./App.css";
 import GameBoard from "./components/GameBoard/Gameboard";
 import ConnectFour from "./ConnectFour";
-import { useState, useEffect, createContext } from "react";
+import { useState, useEffect, createContext, useRef } from "react";
 
 type BoardGameContext = {
   selectColumn: (newColumn: number) => void;
@@ -12,28 +12,30 @@ export const GameContext = createContext<BoardGameContext | undefined>(
 );
 
 function App() {
-  const [columnSelected, setColumnSelected] = useState(0);
+  const [, setColumnSelected] = useState(0);
+
+  const [boardState, setBoardState] = useState<Array<Array<number>>>([]);
+  const connectFourRef = useRef<ConnectFour | null>(null);
+
+  // Initialize ConnectFour when the component mounts
+  useEffect(() => {
+    connectFourRef.current = new ConnectFour(6, 7);
+    setBoardState([connectFourRef.current.board]);
+  }, []);
 
   const connectFour = new ConnectFour(6, 7);
-
-  let boardState = connectFour.board;
 
   function selectColumn(newColumn: number | undefined) {
     if (newColumn || newColumn === 0) {
       connectFour.placePiece(newColumn);
       setColumnSelected(newColumn);
-      boardState = connectFour.board;
+      setBoardState(connectFour.board);
     }
   }
 
   function startNewGame() {
-    // console.log("STARTING NEW GAME!");
     connectFour.startNewGame();
-    // console.log("NEW GAME STARTED!");
   }
-
-  console.log("RENDERING....");
-  connectFour.placePiece(0);
 
   return (
     <div className="app-wrapper">
