@@ -8,7 +8,7 @@ type PieceProps = {
   column: number;
 };
 
-export default function (props?: PieceProps) {
+export default function (props: PieceProps) {
   const boardGameInfo = useContext(GameContext);
 
   //Beginning functionality for handling creation of a new piece
@@ -19,7 +19,7 @@ export default function (props?: PieceProps) {
       boardGameInfo?.selectColumn
     ) {
       // To-do: Add logic for adding piece to selected column
-      boardGameInfo.selectColumn(props?.column);
+      boardGameInfo.selectColumn(props.column);
       return true;
     } else {
       return false;

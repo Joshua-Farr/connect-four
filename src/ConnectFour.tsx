@@ -23,6 +23,8 @@ export default class ConnectFour {
     if (this.checkForWin()) {
       return;
     }
+
+    //Error handling
     if (rowNumber > this.width) {
       throw new Error("Cannot play a piece outside of the board!");
     } else if (this.checkForWin()) {

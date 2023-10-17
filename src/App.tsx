@@ -12,29 +12,22 @@ export const GameContext = createContext<BoardGameContext | undefined>(
 );
 
 function App() {
-  const [, setColumnSelected] = useState(0);
+  // const [columnSelected, setColumnSelected] = useState(0);
 
   const [boardState, setBoardState] = useState<Array<Array<number>>>([]);
-  const connectFourRef = useRef<ConnectFour | null>(null);
 
-  // Initialize ConnectFour when the component mounts
-  useEffect(() => {
-    connectFourRef.current = new ConnectFour(6, 7);
-    setBoardState([connectFourRef.current.board]);
-  }, []);
-
-  const connectFour = new ConnectFour(6, 7);
+  const connectFourRef = useRef(new ConnectFour(6, 7));
 
   function selectColumn(newColumn: number | undefined) {
     if (newColumn || newColumn === 0) {
-      connectFour.placePiece(newColumn);
-      setColumnSelected(newColumn);
-      setBoardState(connectFour.board);
+      connectFourRef.current.placePiece(newColumn);
+      setBoardState(connectFourRef.current.board);
     }
   }
 
   function startNewGame() {
-    connectFour.startNewGame();
+    connectFourRef.current.startNewGame();
+    setBoardState(connectFourRef.current.board);
   }
 
   return (
