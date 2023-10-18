@@ -39,6 +39,8 @@ export default class ConnectFour {
   checkForWin() {
     //Checking vertical
 
+    console.log("Here is the board that we're checking: ", this.board);
+
     for (let i = 0; i < this.board.length; i++) {
       let count = 0;
       for (let j = 0; j < this.board[i].length; j++) {
