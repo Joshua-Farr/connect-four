@@ -18,10 +18,6 @@ export default class ConnectFour {
   }
 
   placePiece(rowNumber: number) {
-    if (this.checkForWin()) {
-      return;
-    }
-
     if (rowNumber > this.width) {
       throw new Error("Cannot play a piece outside of the board!");
     } else if (this.checkForWin()) {
@@ -37,20 +33,23 @@ export default class ConnectFour {
   }
 
   checkForWin() {
-    //Checking vertical
+    console.log("CHECKING FOR THE WIN...");
+    // console.log("Here is the board that we're checking: ", this.board);
 
-    console.log("Here is the board that we're checking: ", this.board);
-
+    //Checking verticals
     for (let i = 0; i < this.board.length; i++) {
       let count = 0;
       for (let j = 0; j < this.board[i].length; j++) {
         if (this.board[i][j] === this.player) {
           count++;
+          console.log(
+            `THE VERT COUNT IS: ${count} for player #${this.player}, count is starting at ${i}x${j}`
+          );
         } else {
           count = 0;
         }
         if (count === 4) {
-          console.log("GANE OVER!");
+          console.log("GAME OVER!");
           console.log(`PLAYER ${this.player} IS THE WINNER!`);
           return true;
         }
@@ -64,11 +63,12 @@ export default class ConnectFour {
       for (let j = 0; j < this.board.length; j++) {
         if (this.board[j][i] === this.player) {
           count++;
+          console.log(`THE HOR COUNT IS: ${count} for ${this.player}`);
         } else {
           count = 0;
         }
         if (count === 4) {
-          console.log("GANE OVER!");
+          console.log("GAME OVER!");
           console.log(`PLAYER ${this.player} IS THE WINNER!`);
           return true;
         }
