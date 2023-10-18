@@ -14,7 +14,6 @@ export const GameContext = createContext<BoardGameContext | undefined>(
 
 function App() {
   const [columnSelected, setColumnSelected] = useState(0);
-
   const [boardState, setBoardState] = useState<Array<Array<number>>>([]);
 
   const connectFourRef = useRef(new ConnectFour(6, 7));

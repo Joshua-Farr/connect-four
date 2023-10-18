@@ -15,7 +15,6 @@ export default function GameBoard({ currentGameBoard }: GameBoardProps) {
     for (let j = 5; j >= 0; j--) {
       for (let i = 0; i < 7; i++) {
         if (currentGameBoard[i] && currentGameBoard[i][j] !== undefined) {
-          // console.log(`Generating piece for spot for Column: ${i} Row: ${j}`);
           renderedBoard.push(
             <GamePiece
               playerNumber={currentGameBoard[i][j]}
@@ -24,7 +23,6 @@ export default function GameBoard({ currentGameBoard }: GameBoardProps) {
             />
           );
         } else {
-          // console.log(`Generating piece for spot for Column: ${i} Row: ${j}`);
           renderedBoard.push(
             <GamePiece playerNumber={3} column={i} key={`piece-${i}-${j}`} />
           );
