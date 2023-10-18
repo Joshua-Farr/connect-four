@@ -1,10 +1,11 @@
 import "./App.css";
 import GameBoard from "./components/GameBoard/Gameboard";
 import ConnectFour from "./ConnectFour";
-import { useState, useEffect, createContext, useRef } from "react";
+import { useState, createContext, useRef } from "react";
 
 type BoardGameContext = {
   selectColumn: (newColumn: number) => void;
+  columnSelected: number;
 };
 
 export const GameContext = createContext<BoardGameContext | undefined>(
@@ -12,7 +13,7 @@ export const GameContext = createContext<BoardGameContext | undefined>(
 );
 
 function App() {
-  // const [columnSelected, setColumnSelected] = useState(0);
+  const [columnSelected, setColumnSelected] = useState(0);
 
   const [boardState, setBoardState] = useState<Array<Array<number>>>([]);
 
@@ -22,6 +23,11 @@ function App() {
     if (newColumn || newColumn === 0) {
       connectFourRef.current.placePiece(newColumn);
       setBoardState(connectFourRef.current.board);
+      if (newColumn === 0) {
+        setColumnSelected((initial) => initial + 10);
+      } else {
+        setColumnSelected((initial) => initial + newColumn);
+      }
     }
   }
 
@@ -34,7 +40,7 @@ function App() {
     <div className="app-wrapper">
       <h1 className="title">Connect Four!</h1>
 
-      <GameContext.Provider value={{ selectColumn }}>
+      <GameContext.Provider value={{ selectColumn, columnSelected }}>
         <GameBoard currentGameBoard={boardState} />
       </GameContext.Provider>
 

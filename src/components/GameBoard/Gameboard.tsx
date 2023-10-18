@@ -12,9 +12,6 @@ export default function GameBoard({ currentGameBoard }: GameBoardProps) {
     }
 
     let renderedBoard: JSX.Element[] = [];
-
-    // console.log("New board is being rendered...", currentGameBoard);
-
     for (let j = 5; j >= 0; j--) {
       for (let i = 0; i < 7; i++) {
         if (currentGameBoard[i] && currentGameBoard[i][j] !== undefined) {

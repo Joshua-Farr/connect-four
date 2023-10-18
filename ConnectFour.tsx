@@ -14,8 +14,6 @@ export default class ConnectFour {
   }
 
   placePiece(rowNumber: number) {
-    console.log("here is the board: ", this.board);
-
     if (rowNumber > this.width) {
       throw new Error("Cannot play a piece outside of the board!");
     } else if (this.checkForWin()) {
@@ -27,18 +25,14 @@ export default class ConnectFour {
 
     console.log(`Placing piece in row: ${rowNumber}`);
     this.board[rowNumber].push(this.player);
-    this.checkForWin();
 
-    //Switching who the player is
+    this.checkForWin();
     this.player === 1 ? (this.player = 2) : (this.player = 1);
-    console.log("*********************************************");
-    // console.log(`Its now player number ${this.player}'s turn!`);
   }
 
   checkForWin() {
     //Checking vertical
 
-    // for(let i=0; )
     let count = 0;
     for (let j = 0; j < this.board[1].length - 4; j++) {
       if (this.board[1][j] === this.player) {
