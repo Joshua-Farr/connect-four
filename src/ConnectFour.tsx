@@ -15,11 +15,14 @@ export default class ConnectFour {
 
   startNewGame() {
     this.board = new Array(this.width).fill([]).map(() => []);
+    this.gameOver = false;
+    this.player = 1;
   }
 
   placePiece(rowNumber: number) {
     if (this.gameOver) {
-      throw new Error("Game has already concluded!");
+      // throw new Error("Game has already concluded!");
+      return;
     }
     if (rowNumber >= this.width) {
       throw new Error("Cannot play a piece outside of the board!");
