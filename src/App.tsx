@@ -38,6 +38,7 @@ function App() {
   return (
     <div className="app-wrapper">
       <h1 className="title">Connect Four!</h1>
+
       <GameContext.Provider value={{ selectColumn, columnSelected }}>
         <GameBoard currentGameBoard={boardState} />
       </GameContext.Provider>
