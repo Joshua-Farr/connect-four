@@ -19,7 +19,7 @@ export default class ConnectFour {
 
   placePiece(rowNumber: number) {
     if (this.gameOver) {
-      throw new Error("Game has already concluded!");
+      console.log("Game has already concluded!");
     }
     if (rowNumber >= this.width) {
       throw new Error("Cannot play a piece outside of the board!");
