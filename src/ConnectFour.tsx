@@ -105,35 +105,53 @@ export default class ConnectFour {
     //   }
     // }
 
+    // for (let i = 0; i < this.width; i++) {
+    //   count = 0;
+    //   for (let x = 0; x < this.width; x++) {
+    //     if (this.board[x][this.height - 1 - i - x] === this.player) {
+    //       count++;
+    //     } else {
+    //       count = 0;
+    //     }
+    //     if (count === 4) {
+    //       console.log("GAME OVER!");
+    //       console.log(`PLAYER ${this.player} IS THE WINNER!`);
+    //       this.gameOver = true;
+
+    //       return true;
+    //     }
+    //   }
+    // }
+
+    // for (let j = 0; j < this.width - 1; j++) {
+    //   for (let x = 1; x < this.width; x++) {
+    //     if (
+    //       j + x < this.width &&
+    //       this.board[x + j][this.height - x] === this.player
+    //     ) {
+    //       count++;
+    //     } else {
+    //       count = 0;
+    //     }
+
+    //     if (count === 4) {
+    //       console.log("GAME OVER!");
+    //       console.log(`PLAYER ${this.player} IS THE WINNER!`);
+    //       this.gameOver = true;
+
+    //       return true;
+    //     }
+    //   }
+    // }
+
     for (let i = 0; i < this.width; i++) {
       count = 0;
-      for (let x = 0; x < this.width; x++) {
-        if (this.board[x][this.height - 1 - i - x] === this.player) {
-          count++;
-        } else {
-          count = 0;
-        }
-        if (count === 4) {
-          console.log("GAME OVER!");
-          console.log(`PLAYER ${this.player} IS THE WINNER!`);
-          this.gameOver = true;
-
-          return true;
-        }
-      }
-    }
-
-    for (let j = 0; j < this.width - 1; j++) {
       for (let x = 1; x < this.width; x++) {
-        if (
-          j + x < this.width &&
-          this.board[x + j][this.height - x] === this.player
-        ) {
+        if (this.board[this.width - x][this.height - x - i] === this.player) {
           count++;
         } else {
           count = 0;
         }
-
         if (count === 4) {
           console.log("GAME OVER!");
           console.log(`PLAYER ${this.player} IS THE WINNER!`);
