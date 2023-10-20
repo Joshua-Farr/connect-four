@@ -90,25 +90,29 @@ export default class ConnectFour {
     //Check Diagonals
 
     let count = 0;
-    // for (let x = 0; x < this.width; x++) {
-    //   if (this.board[x][this.height - 1 - x] === this.player) {
-    //     count++;
-    //   } else {
-    //     count = 0;
-    //   }
-    //   if (count === 4) {
-    //     console.log("GAME OVER!");
-    //     console.log(`PLAYER ${this.player} IS THE WINNER!`);
-    //     this.gameOver = true;
-
-    //     return true;
-    //   }
-    // }
 
     // for (let i = 0; i < this.width; i++) {
     //   count = 0;
     //   for (let x = 0; x < this.width; x++) {
     //     if (this.board[x][this.height - 1 - i - x] === this.player) {
+    //       count++;
+    //     } else {
+    //       count = 0;
+    //     }
+    //     if (count === 4) {
+    //       console.log("GAME OVER!");
+    //       console.log(`PLAYER ${this.player} IS THE WINNER!`);
+    //       this.gameOver = true;
+
+    //       return true;
+    //     }
+    //   }
+    // }
+
+    // for (let i = 0; i < this.width; i++) {
+    //   count = 0;
+    //   for (let x = 1; x < this.width; x++) {
+    //     if (this.board[this.width - x][this.height - x - i] === this.player) {
     //       count++;
     //     } else {
     //       count = 0;
@@ -144,14 +148,39 @@ export default class ConnectFour {
     //   }
     // }
 
-    for (let i = 0; i < this.width; i++) {
-      count = 0;
-      for (let x = 1; x < this.width; x++) {
-        if (this.board[this.width - x][this.height - x - i] === this.player) {
+    //NOT WORKING
+    // for (let j = 0; j < this.width - 1; j++) {
+    //   for (let x = 2; x < this.width; x++) {
+    //     if (
+    //       j + x < this.width &&
+    //       this.board[this.width - x - j][this.height - j] === this.player
+    //     ) {
+    //       count++;
+    //     } else {
+    //       count = 0;
+    //     }
+
+    //     if (count === 4) {
+    //       console.log("GAME OVER!");
+    //       console.log(`PLAYER ${this.player} IS THE WINNER!`);
+    //       this.gameOver = true;
+
+    //       return true;
+    //     }
+    //   }
+    // }
+
+    for (let j = 0; j < this.width; j++) {
+      for (let x = 2; x < this.width; x++) {
+        if (
+          j + x < this.width &&
+          this.board[this.width - x - j][this.height + 1 - x] === this.player
+        ) {
           count++;
         } else {
           count = 0;
         }
+
         if (count === 4) {
           console.log("GAME OVER!");
           console.log(`PLAYER ${this.player} IS THE WINNER!`);
