@@ -89,32 +89,6 @@ export default class ConnectFour {
 
     //Check Diagonals
 
-    //Checking main diagonals
-
-    // if (
-    //   this.board[0][3] === this.player &&
-    //   this.board[1][2] === this.player &&
-    //   this.board[2][1] === this.player &&
-    //   this.board[3][0] === this.player
-    // ) {
-    //   console.log("GAME OVER!");
-    //   console.log(`PLAYER ${this.player} IS THE WINNER!`);
-    //   this.gameOver = true;
-    //   return true;
-    // }
-
-    // if (
-    //   this.board[3][this.height - 1] === this.player &&
-    //   this.board[4][this.height - 2] === this.player &&
-    //   this.board[5][this.height - 3] === this.player &&
-    //   this.board[6][this.height - 4] === this.player
-    // ) {
-    //   console.log("GAME OVER!");
-    //   console.log(`PLAYER ${this.player} IS THE WINNER!`);
-    //   this.gameOver = true;
-    //   return true;
-    // }
-
     let count = 0;
     // for (let x = 0; x < this.width; x++) {
     //   if (this.board[x][this.height - 1 - x] === this.player) {
@@ -139,6 +113,27 @@ export default class ConnectFour {
         } else {
           count = 0;
         }
+        if (count === 4) {
+          console.log("GAME OVER!");
+          console.log(`PLAYER ${this.player} IS THE WINNER!`);
+          this.gameOver = true;
+
+          return true;
+        }
+      }
+    }
+
+    for (let j = 0; j < this.width - 1; j++) {
+      for (let x = 1; x < this.width; x++) {
+        if (
+          j + x < this.width &&
+          this.board[x + j][this.height - x] === this.player
+        ) {
+          count++;
+        } else {
+          count = 0;
+        }
+
         if (count === 4) {
           console.log("GAME OVER!");
           console.log(`PLAYER ${this.player} IS THE WINNER!`);
