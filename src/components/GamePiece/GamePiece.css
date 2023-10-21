@@ -19,3 +19,13 @@
 .player-2 {
   background-color: #fecc6a;
 }
+
+@media (max-width: 480px) {
+  .game-piece {
+    height: 35px;
+    width: 35px;
+    margin: 0;
+    margin-bottom: 6px;
+    margin-inline: 2px;
+  }
+}
